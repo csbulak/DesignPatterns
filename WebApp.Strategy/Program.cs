@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using BaseProject.Data;
 using Microsoft.AspNetCore.Identity;
+using WebApp.Strategy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
        .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+var dbContext = builder.Services.BuildServiceProvider().GetRequiredService<ApplicationDbContext>();
+dbContext.Database.Migrate();
 
 var app = builder.Build();
 

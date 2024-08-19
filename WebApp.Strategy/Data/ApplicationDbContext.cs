@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BaseProject.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BaseProject.Data;
+namespace WebApp.Strategy.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
@@ -11,4 +12,5 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<AppUser> AppUsers { get; set; }
+    public DbSet<Product> Products { get; set; }
 }
